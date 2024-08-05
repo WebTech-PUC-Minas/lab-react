@@ -1,35 +1,30 @@
 <!-- Exemplo de uso do template: https://github.com/kspencerl/lab-springboot-basic-api -->
 
-# Nome do Projeto
+# React.js
 
-<!--Breve descrição do projeto aqui -->
-
+Construção de uma página com a biblioteca React.js.
 
 ## Tecnologias utilizadas
 Linguagens, Frameworks e Bibliotecas utilizadas na construção do projeto.
 
 <!-- Link com os badges para inserir abaixo https://devicon.dev/ -->
 <div style="display: flex; gap: 10px;">
-  <img width="50px" src="">             <!--coloque o link do ícone no src -->
-  <img width="50px" src="">
+  <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg">
+  <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg">
   <img width="50px" src="">
   <img width="50px" src="">
 </div>
 
 ## Onde Aplicar
 Este projeto pode ser aplicado em diversas situações:
-- <!--Exemplos listados aqui -->
-- <!--Exemplos listados aqui -->
-- <!--Exemplos listados aqui -->
-- <!--Exemplos listados aqui -->
-
-
+- Desenvolvimento de sites e aplicações web.
+- Desenvolvimento de componentes reutilizáveis.
+- Integrações com back-end.
+- Construções de dashboards.
 
 # Sumário
 
-* [Instalações](#instalações)
-  * [Pré-Requisitos](#pré-requisitos)
-  * [Configuração de Ambiente](#configuração-de-ambiente)
+* [História do Desenvolvimento Front-End](#história-do-desenvolvimento-front-end)
 * [Roadmap](#roadmap)
   * [Passo 1](#step-1---inicialização-do-projeto-com-spring-initializr)
   * [Passo 2](#step-2---configuração-do-projeto-e-migrações-com-flyway)
@@ -41,9 +36,29 @@ Este projeto pode ser aplicado em diversas situações:
 
 
 
-## Instalações
+## História do Desenvolvimento Front-End
 
-Siga com precisão as orientações de configuração do ambiente para assegurar eficácia consistente no desenvolvimento do projeto.
+O desenvolvimento front-end passou por várias fases, marcadas pelo uso de diferentes ferramentas. Três tecnologias se destacaram ao longo dessa jornada:
+
+- HTML
+- CSS
+- JavaScript
+
+### 🌐 O início:
+No início, cada nova página de um site precisava de um código específico para cada funcionalidade. Isso significava:
+- **Trabalho excessivo:** Repetição de tarefas já feitas.
+- **Códigos mais pesados:** Muitos dados duplicados.
+
+
+### 🚀 A Solução: Bibliotecas e Frameworks
+Para resolver esses problemas, surgiram bibliotecas e frameworks que facilitaram a vida dos desenvolvedores. Um destaque é o React.js:
+- Uma biblioteca JavaScript para criar aplicações front-end **dinâmicas e eficientes**.
+
+### ✅ Benefícios do React.js
+1. **Reutilização de Componentes:** Crie componentes reutilizáveis, economizando tempo e esforço.
+2. **Virtual DOM: Melhora** a performance ao atualizar apenas os componentes necessários.
+3. **Comunidade Ativa:** Suporte constante e muitas bibliotecas adicionais.
+
  
 ### Pré-Requisitos
 <!-- Neste setor, coloque as instalações necessárias para realizar o projeto-->
