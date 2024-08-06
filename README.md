@@ -17,22 +17,22 @@ Linguagens, Frameworks e Bibliotecas utilizadas na construção do projeto.
 
 ## Onde Aplicar
 Este projeto pode ser aplicado em diversas situações:
-- Desenvolvimento de sites e aplicações web.
-- Desenvolvimento de componentes reutilizáveis.
-- Integrações com back-end.
-- Construções de dashboards.
+- Desenvolvimento de **sites** e aplicações **web**.
+- Desenvolvimento de **componentes** reutilizáveis.
+- **Integrações** com back-end.
+- Construções de **dashboards**.
 
 # Sumário
 
 * [História do Desenvolvimento Front-End](#história-do-desenvolvimento-front-end)
-* [Roadmap](#roadmap)
-  * [Passo 1](#step-1---inicialização-do-projeto-com-spring-initializr)
-  * [Passo 2](#step-2---configuração-do-projeto-e-migrações-com-flyway)
-  * [Passo 3](#step-3)
-  * [Passo 4](#step-4)
-* [Contato](#contato)
-* [License](#license)
-
+* [O que é o React?](#o-que-é-o-react)
+* [Introdução ao Lab](#introdução-ao-lab)
+* [Step 1 - SetUp](#step-1---setup)
+* [Step 2 - Entendendo o JSX](#step-2---entendendo-o-jsx)
+* [Step 3 - Componentes e Props](#step-3---componentes-e-props)
+* [Step 4 - Estados](#step-4---estados)
+* [Step 5 - Rotas](#step-5---rotas)
+* [Boas práticas](#boas-práticas)
 
 
 
@@ -133,7 +133,7 @@ Nesse lab você irá aprender os principais conceitos para a criação de uma ap
     <button class="nav-toggle" id="navToggle">Menu</button>
 </nav>
 ```
-##### React/JSX
+#### React/JSX
 
 ```jsx
 import React, { useState } from 'react';
@@ -336,7 +336,9 @@ Você pode usar este componente passando diferentes valores para a prop ``nome``
 Vamos iniciar a criação dos nossos primeiros componentes em React.js, o Navbar e Footer. Siga as instruções abaixo para a realização: 
 
 1️. Vá para a pasta ``src`` e crie uma nova pasta chamada ``components``
+
 2️. Dentro de components crie um arquivo nomeado de ``Navbar.js``
+
 3️. No arquivo digite o código abaixo:
 
 ```jsx
@@ -530,7 +532,7 @@ export default useFetch;
    background-color: blue;
    color: white;
  }
- 
+
 import styles from './Button.module.css';
 ```
 
