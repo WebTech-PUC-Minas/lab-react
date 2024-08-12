@@ -29,8 +29,10 @@ Este projeto pode ser aplicado em diversas situações:
 * [Step 1 - SetUp](#step-1---setup)
 * [Step 2 - Entendendo o JSX](#step-2---entendendo-o-jsx)
 * [Step 3 - Componentes e Props](#step-3---componentes-e-props)
-* [Step 4 - Estados](#step-4---estados)
-* [Step 5 - Rotas](#step-5---rotas)
+  * [Hora de Praticar 01](#-hora-de-praticar-01)
+* [Step 4 - Rotas](#step-5---rotas)
+  * [Hora de Praticar 02](#-hora-de-praticar-02)
+* [Step 5 - Estados](#step-4---estados)
 * [Boas práticas](#boas-práticas)
 
 
@@ -329,7 +331,7 @@ Você pode usar este componente passando diferentes valores para a prop ``nome``
 <Saudacao nome="João" />
 ```
 
-### 👨‍🏫 Hora de Praticar
+### 👨‍🏫 Hora de Praticar 01
 
 Vamos iniciar a criação dos nossos primeiros componentes em React.js, o Navbar e Footer. Nessa seção você irá aprender sobre os Links, que são muito similares com as tags <a> usadas em HTML. Eles se diferem dessas tags por não necessitarem recarregar a página quando acontece o clique sobre eles. Siga as instruções abaixo para a realização: 
 
@@ -409,7 +411,7 @@ export default App;
   - Usado para criar links de navegação que modificam o URL sem recarregar a página.
   - Substitui o uso de ``<a>`` para navegação interna.
 
-### 👨‍🏫 Hora de Praticar
+### 👨‍🏫 Hora de Praticar 02
 
 Agora iremos dar inicio ao nosso projeto criando o arquivo que será responsável por chamar todos os outros, o ``App.js``. Nele iremos chamar nosso componente ``Navbar`` e utilizar o nosso conhecimento sobre rotas. Siga as instruções abaixo para a realização: 
 
@@ -512,6 +514,9 @@ const [contador, setContador] = useState(0);
 <button onClick={() => setContador(contador + 1)}>Incrementar</button>
 ```
 
+### 👨‍🏫 Hora de Praticar 03
+
+Dessa vez iremos utilizar um api externa
 
 ## Boas práticas
 
