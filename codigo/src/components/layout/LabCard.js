@@ -3,9 +3,6 @@ import LabContributor from './LabContributor';
 import styles from './LabCard.module.css';
 
 function LabCard({ repo }) {
-
-    console.log(repo)
-
     return (
         <div className={styles.lab_card}>
             <div>
@@ -27,6 +24,7 @@ function LabCard({ repo }) {
                 {/* <ButtonLink text="Saiba mais" link={repo.html_url} />*/}
             </div>
         </div>
+        
     );
 }
 

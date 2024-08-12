@@ -43,7 +43,7 @@ function Labs() {
             <section>
                 <h1>Labs</h1>
                 <p>Todo projeto desenvolvido pelos membros da WebTech gera um ou mais labs, que são repositórios no GitHub que contam com todo o detalhamento técnico das tecnologias utilizadas e dos conhecimentos desenvolvidos.</p>
-                <div >
+                <div>
                     {repos.map((repo) => (
                         <LabCard key={repo.id} repo={repo} />
                     ))}
