@@ -1,0 +1,23 @@
+.footer {
+    background-color: rgb(31 39 51);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.footer h4 {
+    margin-bottom: 0.5rem;
+}
+
+.footer ul {
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.footer ul li {
+    list-style: none;
+    padding-bottom: 1rem;
+    color: #949494;
+}
+
