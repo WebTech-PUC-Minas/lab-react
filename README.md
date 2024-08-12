@@ -11,8 +11,7 @@ Linguagens, Frameworks e Bibliotecas utilizadas na construção do projeto.
 <div style="display: flex; gap: 10px;">
   <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg">
   <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg">
-  <img width="50px" src="">
-  <img width="50px" src="">
+  <img width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg">
 </div>
 
 ## Onde Aplicar
@@ -56,7 +55,7 @@ Para resolver esses problemas, surgiram bibliotecas e frameworks que facilitaram
 
 ### ✅ Benefícios do React.js
 1. **Reutilização de Componentes:** Crie componentes reutilizáveis, economizando tempo e esforço.
-2. **Virtual DOM: Melhora** a performance ao atualizar apenas os componentes necessários.
+2. **Virtual DOM:** Melhora a performance ao atualizar apenas os componentes necessários.
 3. **Comunidade Ativa:** Suporte constante e muitas bibliotecas adicionais.
 
 
@@ -209,7 +208,6 @@ Para iniciar um novo projeto React, vamos usar a ferramenta Create React App, qu
 
 ```sh
 npx create-react-app web_tech_page
-cd webtech-site
 ```
 
 ### 5️. Estrutura do Projeto:
@@ -333,28 +331,31 @@ Você pode usar este componente passando diferentes valores para a prop ``nome``
 
 ### 👨‍🏫 Hora de Praticar
 
-Vamos iniciar a criação dos nossos primeiros componentes em React.js, o Navbar e Footer. Siga as instruções abaixo para a realização: 
+Vamos iniciar a criação dos nossos primeiros componentes em React.js, o Navbar e Footer. Nessa seção você irá aprender sobre os Links, que são muito similares com as tags <a> usadas em HTML. Eles se diferem dessas tags por não necessitarem recarregar a página quando acontece o clique sobre eles. Siga as instruções abaixo para a realização: 
 
 1️. Vá para a pasta ``src`` e crie uma nova pasta chamada ``components``
 
-2️. Dentro de components crie um arquivo nomeado de ``Navbar.js``
+2️. Dentro de components crie uma nova pasta chamada ``layout``
+
+3. Em ``layout``crie um arquivo nomeado de ``Navbar.js``
 
 3️. No arquivo digite o código abaixo:
 
 ```jsx
 // src/components/Header.js
 import React from 'react';
+import { Link } from 'react-router-dom'
+import styles from './Navbar.module.css'
 
 const Header = () => (
-    <header>
-        <h1>WebTech PUC Minas</h1>
+    <header className={styles.navbar}>
+        <h1><Link to="/">WebTech PUC Minas</Link></h1>
         <nav>
             <ul>
-                <li>Sobre</li>
-                <li>Labs</li>
-                <li>Eventos</li>
-                <li>Equipe</li>
-                <li>Contato</li>
+                <li><Link to="/">Sobre</Link></li>
+                <li><Link to="/">Labs</Link></li>
+                <li><Link to="/">Eventos</Link></li>
+                <li><Link to="/">Equipe</Link></li>
             </ul>
         </nav>
     </header>
@@ -363,6 +364,7 @@ const Header = () => (
 export default Header;
 ```
 
+##### Utilize o CSS: ``Navbar.module.css``
 
 
 ## Step 4 - Estados 
