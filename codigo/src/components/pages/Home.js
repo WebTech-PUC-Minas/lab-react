@@ -1,8 +1,11 @@
+import styles from './Home.module.css'
 
-function App() {
+function Home() {
   return (
-    <p>Hello world!</p>
+    <div className={styles.home_page}>
+      <h1>Bem vindo, a <span>WebTech!</span></h1>
+    </div>
   );
 }
 
-export default App;
+export default Home;

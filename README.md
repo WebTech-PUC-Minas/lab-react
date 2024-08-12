@@ -333,27 +333,27 @@ Você pode usar este componente passando diferentes valores para a prop ``nome``
 
 Vamos iniciar a criação dos nossos primeiros componentes em React.js, o Navbar e Footer. Nessa seção você irá aprender sobre os Links, que são muito similares com as tags <a> usadas em HTML. Eles se diferem dessas tags por não necessitarem recarregar a página quando acontece o clique sobre eles. Siga as instruções abaixo para a realização: 
 
-1️. Vá para a pasta ``src`` e crie uma nova pasta chamada ``components``
+- Vá para a pasta ``src`` e crie uma nova pasta chamada ``components``
 
-2️. Dentro de components crie uma nova pasta chamada ``layout``
+- Dentro de components crie uma nova pasta chamada ``layout``
 
-3. Em ``layout``crie um arquivo nomeado de ``Navbar.js``
+- Em ``layout``crie um arquivo nomeado de ``Navbar.js``
 
-3️. No arquivo digite o código abaixo:
+- No arquivo digite o código abaixo:
 
 ```jsx
-// src/components/Header.js
+// src/components/layout/Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
-const Header = () => (
+const Navbar = () => (
     <header className={styles.navbar}>
         <h1><Link to="/">WebTech PUC Minas</Link></h1>
         <nav>
             <ul>
                 <li><Link to="/">Sobre</Link></li>
-                <li><Link to="/">Labs</Link></li>
+                <li><Link to="/labs">Labs</Link></li>
                 <li><Link to="/">Eventos</Link></li>
                 <li><Link to="/">Equipe</Link></li>
             </ul>
@@ -361,56 +361,12 @@ const Header = () => (
     </header>
 );
 
-export default Header;
+export default Navbar;
 ```
 
 ##### Utilize o CSS: ``Navbar.module.css``
 
-
-## Step 4 - Estados 
-
-### 📊 Estados:
-Estados são objetos que armazenam dados dinâmicos e podem mudar ao longo do tempo, permitindo que os componentes React sejam interativos e **reativos** a mudanças.
-
-### 📝 Exemplo de componente com estado (usando hooks):
-
-```jsx
-import React, { useState } from 'react';
-
-const Contador = () => {
-  const [contador, setContador] = useState(0);
-
-  return (
-    <div>
-      <p>Contagem: {contador}</p>
-      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
-    </div>
-  );
-};
-
-export default Contador;
-```
-
-### Como os estados funcionam:
-- Definição do Estado Inicial:
-  - Usamos ``useState`` para definir o estado inicial.
-  - ``useState`` retorna um array com dois elementos: o valor atual do estado e uma função para atualizar o estado.
-
-```jsx
-const [contador, setContador] = useState(0);
-```
-
-- Atualização do Estado:
-  - Usamos a função ``setContador`` para atualizar o estado.
-  - Quando o estado é atualizado, o componente é re-renderizado para refletir as mudanças.
-
-```jsx
-<button onClick={() => setContador(contador + 1)}>Incrementar</button>
-```
-
-
-
-## Step 5 - Rotas 
+## Step 4 - Rotas 
 
 ### 🛣️ Rotas:
 No React, usamos bibliotecas como ``react-router-dom`` para gerenciar a navegação entre diferentes páginas ou componentes. ``react-router-dom`` fornece componentes como ``Router``, ``Route``, ``Switch`` e ``Link`` para configurar as rotas da aplicação.
@@ -453,7 +409,108 @@ export default App;
   - Usado para criar links de navegação que modificam o URL sem recarregar a página.
   - Substitui o uso de ``<a>`` para navegação interna.
 
+### 👨‍🏫 Hora de Praticar
 
+Agora iremos dar inicio ao nosso projeto criando o arquivo que será responsável por chamar todos os outros, o ``App.js``. Nele iremos chamar nosso componente ``Navbar`` e utilizar o nosso conhecimento sobre rotas. Siga as instruções abaixo para a realização: 
+
+- Vá para a pasta ``src``
+
+- Encontre um arquivo chamado ``App.js``
+
+- Reescreva sobre o antigo código o código abaixo:
+
+
+```jsx
+// src/App.jsimport { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Home from "./components/pages/Home"
+import Navbar from './components/layout/Navbar';
+
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <div>
+        <Routes>
+          <Route exact path="/" Component={Home} />
+          <Route exact path="/labs" Component={Home} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+- Posteriormente, vá para ``src/components``
+
+- Crie uma pasta chamada ``pages``
+
+- Dentro de ``pages`` crie um arquivo chamado ``Home.js``
+
+- Insira o código abaixo:
+
+
+```jsx
+// src/components/pages/Home.js
+import styles from './Home.module.css'
+
+function Home() {
+  return (
+    <div className={styles.home_page}>
+      <h1>Bem vindo, a <span>WebTech!</span></h1>
+    </div>
+  );
+}
+
+export default Home;
+```
+
+
+##### Utilize o CSS: ``Home.module.css``
+
+## Step 5 - Estados 
+
+### 📊 Estados:
+Estados são objetos que armazenam dados dinâmicos e podem mudar ao longo do tempo, permitindo que os componentes React sejam interativos e **reativos** a mudanças.
+
+### 📝 Exemplo de componente com estado (usando hooks):
+
+```jsx
+import React, { useState } from 'react';
+
+const Contador = () => {
+  const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <p>Contagem: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+};
+
+export default Contador;
+```
+
+### Como os estados funcionam:
+- Definição do Estado Inicial:
+  - Usamos ``useState`` para definir o estado inicial.
+  - ``useState`` retorna um array com dois elementos: o valor atual do estado e uma função para atualizar o estado.
+
+```jsx
+const [contador, setContador] = useState(0);
+```
+
+- Atualização do Estado:
+  - Usamos a função ``setContador`` para atualizar o estado.
+  - Quando o estado é atualizado, o componente é re-renderizado para refletir as mudanças.
+
+```jsx
+<button onClick={() => setContador(contador + 1)}>Incrementar</button>
+```
 
 
 ## Boas práticas

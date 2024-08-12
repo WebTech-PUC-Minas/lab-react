@@ -1,0 +1,14 @@
+.home_page {
+    min-height: 24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_page h1 {
+    font-size: 4rem;
+}
+
+.home_page h1 span {
+    color: rgb(253 188 47);
+}

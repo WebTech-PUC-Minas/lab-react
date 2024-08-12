@@ -1,0 +1,15 @@
+.lab_contributor a {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.lab_contributor img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    transition: filter 0.2s ease-in-out;
+}
+
+.lab_contributor img:hover {
+    filter: brightness(90%);
+}
