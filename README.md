@@ -33,6 +33,7 @@ Este projeto pode ser aplicado em diversas situações:
 * [Step 4 - Rotas](#step-5---rotas)
   * [Hora de Praticar 02](#-hora-de-praticar-02)
 * [Step 5 - Estados](#step-4---estados)
+  * [Hora de Praticar 03](#-hora-de-praticar-03)
 * [Boas práticas](#boas-práticas)
 
 
@@ -516,7 +517,7 @@ const [contador, setContador] = useState(0);
 
 ### 👨‍🏫 Hora de Praticar 03
 
-Dessa vez iremos utilizar um api externa
+Nesta tarefa, vamos integrar uma API externa do GitHub para obter dados sobre os Labs da organização WebTech. Utilizaremos uma variedade de componentes e técnicas de controle de estado que aprendemos neste laboratório. Siga os passos abaixo para concluir a tarefa com sucesso:
 
 ## Boas práticas
 
