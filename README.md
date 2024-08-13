@@ -355,10 +355,8 @@ const Navbar = () => (
         <h1><Link to="/">WebTech PUC Minas</Link></h1>
         <nav>
             <ul>
-                <li><Link to="/">Sobre</Link></li>
+                <li><Link to="/">Home</Link></li>
                 <li><Link to="/labs">Labs</Link></li>
-                <li><Link to="/">Eventos</Link></li>
-                <li><Link to="/">Equipe</Link></li>
             </ul>
         </nav>
     </header>
@@ -424,10 +422,13 @@ Agora iremos dar inicio ao nosso projeto criando o arquivo que será responsáve
 
 
 ```jsx
-// src/App.jsimport { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// src/App.js
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from "./components/pages/Home"
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Labs from './components/pages/Labs';
 
 
 function App() {
@@ -437,9 +438,10 @@ function App() {
       <div>
         <Routes>
           <Route exact path="/" Component={Home} />
-          <Route exact path="/labs" Component={Home} />
+          <Route exact path="/labs" Component={Labs} />
         </Routes>
       </div>
+      <Footer/>
     </Router>
   );
 }
@@ -470,7 +472,6 @@ function Home() {
 
 export default Home;
 ```
-
 
 ##### Utilize o CSS: ``Home.module.css``
 
@@ -518,6 +519,192 @@ const [contador, setContador] = useState(0);
 ### 👨‍🏫 Hora de Praticar 03
 
 Nesta tarefa, vamos integrar uma API externa do GitHub para obter dados sobre os Labs da organização WebTech. Utilizaremos uma variedade de componentes e técnicas de controle de estado que aprendemos neste laboratório. Siga os passos abaixo para concluir a tarefa com sucesso:
+
+- Vá em ``src/components/pages``
+
+- Crie um arquivo ``Labs.js``
+
+- Dentro de ``Labs.js``insira o código abaixo:
+
+```jsx
+// src/components/pages/Labs.js
+import React, { useEffect, useState } from 'react';
+import LabCard from '../layout/LabCard';
+import styles from './Lab.module.css'
+
+
+function Labs() {
+    const [repos, setRepos] = useState([]);
+    const githubUsername = 'WebTech-PUC-Minas';
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                // Consultar os repositórios do usuário
+                const reposResponse = await fetch(`https://api.github.com/users/WebTech-PUC-Minas/repos`);
+                const reposData = await reposResponse.json();
+
+
+                // Informações de cada contribuidor
+                const reposWithContributors = await Promise.all(
+                    reposData.map(async (repo) => {
+                        const contributorsResponse = await fetch(repo.contributors_url);
+                        const contributorsData = await contributorsResponse.json();
+                        return { ...repo, contributors: contributorsData };
+                    })
+                );
+
+
+                // Filtra somente os labs
+                const filteredRepos = reposWithContributors
+                    .filter((repo) => repo.name.startsWith('lab-'))
+                    .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+                setRepos(filteredRepos);
+            } catch (error) {
+                console.error('Erro ao buscar dados do GitHub:', error);
+            }
+        }
+
+        fetchData();
+    }, [githubUsername]);
+
+    return (
+        <div className={styles.lab_page}>
+            <section>
+                <h1>Labs</h1>
+                <p className={styles.description}>Todo projeto desenvolvido pelos membros da WebTech gera um ou mais labs, que são repositórios no GitHub que contam com todo o detalhamento técnico das tecnologias utilizadas e dos conhecimentos desenvolvidos.</p>
+                <div className={styles.grid}>
+                    {repos.map((repo) => (
+                        <LabCard key={repo.id} repo={repo} />
+                    ))}
+                </div>
+                <div className={styles.grid}>
+                </div>
+            </section>
+        </div>
+    );
+}
+
+export default Labs;
+```
+##### Utilize o CSS: ``Labs.module.css``
+
+Nesta página, buscamos informações do perfil GitHub da WebTech, filtrando especificamente os repositórios que são identificados como "labs". Além disso, coletamos dados sobre os contribuidores de cada projeto, destacando quem contribuiu para cada lab.
+
+Note que estamos utilizando um componente que ainda não foi criado no projeto, o ``LabCard``. Esse componente será responsável por exibir as informações de cada repositório em um formato de card. A seguir, vamos criar o LabCard:
+
+- Vá em ``src/components/layout``
+
+- Crie um arquivo chamado ``LabCard.js``
+
+- Nesse arquivo insira o código abaixo:
+
+```jsx
+// src/components/layout/LabCard.js
+import LabLabel from './LabLabel';
+import LabContributor from './LabContributor';
+import styles from './LabCard.module.css';
+
+function LabCard({ repo }) {
+    return (
+        <div className={styles.lab_card}>
+            <div>
+                <div className={styles.card_top}>
+                    <h5>{repo.name}</h5>
+                    <div className={styles.contributors}>
+                        {repo.contributors.slice(0, 3).map((contributor) => (
+                            <LabContributor key={contributor.id} contributor={contributor} />
+                        ))}
+                    </div>
+                </div>
+                <p>{repo.description}</p>
+            </div>
+            <div className={styles.card_footer}>
+                <div className={styles.labels}>
+                    {repo.language && <LabLabel>{repo.language}</LabLabel>}
+                    {repo.stargazers_count > 0 && <LabLabel> {repo.stargazers_count}</LabLabel>}
+                </div>
+                {/* <ButtonLink text="Saiba mais" link={repo.html_url} />*/}
+                <div>
+                    <a href={repo.html_url}>Saiba mais</a>
+                </div>
+            </div>
+        </div>
+        
+    );
+}
+
+export default LabCard;
+```
+
+##### Utilize o CSS: ``LabCard.module.css``
+
+
+Esse código exibe as informações de cada repositório, recebendo o próprio repositório como parâmetro. Ele organiza os dados nos locais apropriados e faz uso de dois componentes adicionais: ``LabContributor`` e ``LabLabel``.
+
+A seguir, vamos criar o primeiro componente, o ``LabContributor``:
+
+- Navegue até ``src/components/layout``.
+
+- Crie um arquivo chamado ``LabContributor.js``.
+
+- Insira o seguinte código:
+
+```jsx
+// src/components/layout/LabContributor.js
+import styles from './LabContributor.module.css'
+
+function LabContributor({ contributor }) {
+  return (
+    <div className={styles.lab_contributor}>
+      <a href={contributor.html_url} target="_blank" rel="noopener noreferrer">
+        <img
+          src={contributor.avatar_url}
+          alt={contributor.login}
+        />
+      </a>
+    </div>
+  );
+}
+
+export default LabContributor;
+```
+
+##### Utilize o CSS: ``LabContributor.module.css``
+
+
+O código recebe o contribuidor associado e exibe suas informações básicas. Em seguida, vamos criar o componente ``LabLabel``:
+
+- Vá para ``src/components/layout``
+
+- Crie um arquivo chamado ``LabLabel.js``
+
+- Insira o código abaixo:
+
+```jsx
+// src/components/layout/LabLabel.js
+import styles from './LabLabel.module.css'
+
+function LabLabel({ children }) {
+    return (
+        <div className={styles.lab_label}>{children}</div>
+    );
+}
+
+export default LabLabel;
+```
+
+##### Utilize o CSS: ``LabLabel.module.css``
+
+Com isso, concluímos a criação da nossa primeira página em React, aplicando conceitos fundamentais como rotas, JSX, componentes, props e estados. 
+
+Explore mais desta tecnologia incrível, experimentando com novos conceitos e criando páginas adicionais semelhantes às da WebTech. Ao concluir o projeto, sua página deve se assemelhar ao exemplo mostrado abaixo. Acesse o site da **[WebTech](https://webtech.network/)** e tente replicar mais páginas para aprimorar ainda mais suas habilidades!
+
+![Página Final](assets/final_page.png)
+
+##### Explore os arquivos desse repositório e insira componentes como ``Footer.js``
+
 
 ## Boas práticas
 
@@ -601,10 +788,54 @@ export default useFetch;
 import styles from './Button.module.css';
 ```
 
-## Contato
-Seu nome - [seuemail@gmail.com](mailto:seuemail@gmail.com).
+## Novas tendências em React e Front-End
 
-GitHub: [github.com/seuUser](https://github.com/seuUser)
+React, a popular biblioteca para construção de interfaces de usuário, está sempre evoluindo para atender às necessidades crescentes dos desenvolvedores e das aplicações modernas. Aqui estão algumas das principais tendências e inovações em React que estão moldando o futuro do desenvolvimento web:
+
+### 1. Suspense e Concurrent Mode
+
+O React Suspense e o Concurrent Mode são duas das principais inovações para melhorar a performance e a experiência do usuário. O Suspense permite que você defina quais partes da interface podem ser renderizadas de forma assíncrona, enquanto o Concurrent Mode permite que o React interaja com a UI de forma mais fluida e responsiva, evitando bloqueios e melhorando a experiência geral.
+
+### 2. React Server Components
+
+Os React Server Components são uma nova forma de renderizar componentes no servidor, que permite construir aplicações mais rápidas e eficientes. Eles ajudam a otimizar o carregamento inicial da página, reduzindo a quantidade de JavaScript enviado ao cliente e melhorando o desempenho geral.
+
+### 3. Hooks Avançados
+
+Os Hooks continuam a ser uma tendência significativa, com novos hooks sendo adicionados e mais práticas recomendadas surgindo. Hooks como useMemo, useCallback, e useReducer têm se mostrado essenciais para gerenciar estados e efeitos em componentes funcionais, enquanto novos hooks personalizados oferecem soluções específicas para problemas comuns.
+
+### 4. Web Vitals e Performance
+A medição e otimização dos Web Vitals, como tempo de carregamento, interatividade e estabilidade visual, estão se tornando essenciais. O React está se ajustando para oferecer melhores práticas e ferramentas para monitorar e melhorar esses aspectos críticos da performance.
+
+### 5. TypeScript e Tipagem Estática
+
+A integração com TypeScript está se tornando cada vez mais comum, proporcionando uma tipagem estática robusta para aplicações React. Isso ajuda a reduzir erros e melhora a manutenção do código, especialmente em projetos grandes e complexos.
+
+### 6. Design Systems e Component Libraries
+O uso de sistemas de design e bibliotecas de componentes (como Material-UI, Ant Design e Chakra UI) está crescendo, permitindo a criação de interfaces consistentes e reutilizáveis com maior eficiência.
+
+### 7. Automação e Ferramentas de Desenvolvimento
+A automação de tarefas e a integração contínua (CI) estão se tornando padrão em projetos React. Ferramentas como Jest para testes, ESLint para linting, e Prettier para formatação de código são cada vez mais integradas para garantir a qualidade e a consistência do código.
+
+### 8. Otimização com React Query e SWR
+Ferramentas como React Query e SWR estão ganhando popularidade para gerenciamento e cache de dados. Elas facilitam a busca, o cache e a sincronização de dados com o servidor, melhorando a eficiência das aplicações e simplificando o gerenciamento de estado.
+
+### 9. Next.js e Frameworks de Renderização
+Frameworks como Next.js continuam a ser amplamente utilizados em conjunto com React para fornecer renderização no servidor (SSR), geração de sites estáticos (SSG) e outras funcionalidades avançadas. Esses frameworks ajudam a melhorar o desempenho, SEO e a experiência do desenvolvedor.
+
+Para isso, produzimos outro lab essencial para quem deseja explorar sobre front-end, explicando um pouco mais de Next.js. Entre no **[link](https://github.com/WebTech-PUC-Minas/lab-next-js)** e aprenda sobre Next.js!!
+
+<br/>
+
+Essas tendências estão moldando o futuro do desenvolvimento com React, ajudando os desenvolvedores a criar aplicações mais rápidas, escaláveis e eficientes. Ficar atualizado com essas tendências pode oferecer uma vantagem significativa na construção de aplicações modernas e de alta qualidade.
+
+## Contato
+
+Mariana Almeida - [marianaalmeidafga@gmail.com](mailto:marianaalmeidafga@gmail.com).
+GitHub: [github.com/marialmeida1](https://github.com/marialmeida1)
+
+Nilson Deon Cordeiro Filho - [nilsondeon01@gmail.com](mailto:nilsondeon01@gmail.com@gmail.com).
+GitHub: [github.com/NilsonDeon](https://github.com/NilsonDeon)
 
 ## License
 

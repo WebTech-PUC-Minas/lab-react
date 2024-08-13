@@ -7,10 +7,8 @@ const Navbar = () => (
         <h1><Link to="/">WebTech PUC Minas</Link></h1>
         <nav>
             <ul>
-                <li><Link to="/">Sobre</Link></li>
+                <li><Link to="/">Home</Link></li>
                 <li><Link to="/labs">Labs</Link></li>
-                <li><Link to="/">Eventos</Link></li>
-                <li><Link to="/">Equipe</Link></li>
             </ul>
         </nav>
     </header>

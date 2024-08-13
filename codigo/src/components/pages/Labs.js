@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import LabCard from '../layout/LabCard';
-import styles from './Lab.module.css'
+import styles from './Labs.module.css'
 
 function Labs() {
     const [repos, setRepos] = useState([]);
-    const githubUsername = 'WebTech-PUC-Minas'; // Substitua pelo nome de usuário do GitHub desejado
+    const githubUsername = 'WebTech-PUC-Minas';
 
     useEffect(() => {
         async function fetchData() {
@@ -14,7 +14,7 @@ function Labs() {
                 const reposData = await reposResponse.json();
 
 
-                // Adicionar informações dos contribuidores a cada repositório
+                // Informações de cada contribuidor
                 const reposWithContributors = await Promise.all(
                     reposData.map(async (repo) => {
                         const contributorsResponse = await fetch(repo.contributors_url);
@@ -24,7 +24,7 @@ function Labs() {
                 );
 
 
-                // Filtrar e ordenar os repositórios
+                // Filtra somente os labs
                 const filteredRepos = reposWithContributors
                     .filter((repo) => repo.name.startsWith('lab-'))
                     .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
@@ -42,11 +42,13 @@ function Labs() {
         <div className={styles.lab_page}>
             <section>
                 <h1>Labs</h1>
-                <p>Todo projeto desenvolvido pelos membros da WebTech gera um ou mais labs, que são repositórios no GitHub que contam com todo o detalhamento técnico das tecnologias utilizadas e dos conhecimentos desenvolvidos.</p>
-                <div>
+                <p className={styles.description}>Todo projeto desenvolvido pelos membros da WebTech gera um ou mais labs, que são repositórios no GitHub que contam com todo o detalhamento técnico das tecnologias utilizadas e dos conhecimentos desenvolvidos.</p>
+                <div className={styles.grid}>
                     {repos.map((repo) => (
                         <LabCard key={repo.id} repo={repo} />
                     ))}
+                </div>
+                <div className={styles.grid}>
                 </div>
             </section>
         </div>

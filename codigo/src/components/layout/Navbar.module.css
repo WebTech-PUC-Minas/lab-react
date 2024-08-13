@@ -21,4 +21,6 @@
     list-style: none;
     gap: 1rem;
     align-items: center;
+    font-weight: bold;
+    font-size: 1.25rem;
 }
