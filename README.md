@@ -35,7 +35,7 @@ Este projeto pode ser aplicado em diversas situações:
 * [Step 5 - Estados](#step-4---estados)
   * [Hora de Praticar 03](#-hora-de-praticar-03)
 * [Boas práticas](#boas-práticas)
-
+* [Novas tendências em React e Front-End](#novas-tendências-em-react-e-front-end)
 
 
 ## História do Desenvolvimento Front-End
