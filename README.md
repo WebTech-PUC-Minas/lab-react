@@ -397,12 +397,13 @@ export default App;
 
 ### Detalhes sobre ``react-router-dom``:
 
-- Router:
+- BrowserRouter:
   - ``BrowserRouter`` é o componente principal que envolve toda a aplicação.
   - Controla a sincronização do URL com a interface do usuário.
 - Route:
   - Define uma rota e o componente que será renderizado quando o URL corresponder ao caminho especificado.
-  - O ``prop`` exact garante que o caminho deve corresponder exatamente.
+  - O atributo `path` define o caminho da URL, enquanto element recebe o componente a ser renderizado.
+  - Diferente da versão anterior, não é mais necessário o `prop exact` porque a correspondência é exata por padrão.
 - Switch:
   - Renderiza exclusivamente a primeira rota filha que corresponde ao caminho atual.
   - Evita que múltiplas rotas sejam renderizadas ao mesmo tempo.
