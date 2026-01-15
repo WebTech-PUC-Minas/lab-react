@@ -832,11 +832,11 @@ Essas tendências estão moldando o futuro do desenvolvimento com React, ajudand
 
 ## Contato
 
-Mariana Almeida - [marianaalmeidafga@gmail.com](mailto:marianaalmeidafga@gmail.com).
-GitHub: [github.com/marialmeida1](https://github.com/marialmeida1)
+Mariana Almeida - [marianaalmeidafga@gmail.com](mailto:marianaalmeidafga@gmail.com).<br>
+GitHub: [github.com/marialmeida1](https://github.com/marialmeida1).
 
-Nilson Deon Cordeiro Filho - [nilsondeon01@gmail.com](mailto:nilsondeon01@gmail.com@gmail.com).
-GitHub: [github.com/NilsonDeon](https://github.com/NilsonDeon)
+Nilson Deon Cordeiro Filho - [nilsondeon01@gmail.com](mailto:nilsondeon01@gmail.com@gmail.com).<br>
+GitHub: [github.com/NilsonDeon](https://github.com/NilsonDeon).
 
 ## License
 
